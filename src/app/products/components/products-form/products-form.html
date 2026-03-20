@@ -13,7 +13,6 @@
     </button>
   </div>
 
-  <!-- 👇 Todo el formulario debe ir dentro de offcanvas-body -->
   <div class="offcanvas-body">
     <form (ngSubmit)="onSubmit()">
 
@@ -71,7 +70,7 @@
         <label class="form-label fw-semibold">Código de Barras</label>
         <input type="text" maxlength="13" class="form-control"
                [(ngModel)]="product.codigo_barras"
-               name="codigo_barras" required>
+               name="codigo_barras">
       </div>
 
       <!-- Tipo de Producto -->
@@ -114,6 +113,14 @@
                name="claveProveedor" required>
       </div>
 
+      <!-- Presentación -->
+      <div class="mb-4">
+        <label class="form-label fw-semibold">Presentación</label>
+        <input type="text" maxlength="18" class="form-control"
+               [(ngModel)]="product.presentacion"
+               name="presentacion" required>
+      </div>
+
       <!-- Imagen -->
       <div class="mb-4">
         <label class="form-label fw-semibold">Imagen</label>
@@ -131,8 +138,8 @@
       </button>
 
     </form>
-  </div> <!-- 👈 cierre correcto del offcanvas-body -->
-</div> <!-- 👈 cierre correcto del offcanvas -->
+  </div>
+</div>
 
 <div class="offcanvas-backdrop fade"
      [class.show]="visible"

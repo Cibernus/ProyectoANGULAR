@@ -101,3 +101,18 @@ td img {
   opacity: 0.8;
   background-color: #fee2e2;
 }
+.tabla-scroll {
+  overflow-x: auto;   /* 👈 activa scroll horizontal */
+  width: 100%;
+}
+
+table {
+  min-width: 1200px;  /* 👈 asegura que todas las columnas tengan espacio */
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 8px 12px;
+  text-align: left;
+  white-space: nowrap; /* 👈 evita que se rompa el texto en varias líneas */
+}

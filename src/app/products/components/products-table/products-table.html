@@ -6,38 +6,55 @@
         <th>Descripción</th>
         <th>Precio</th>
         <th>Cantidad</th>
+        <th>Margen Ganancia</th>
+        <th>Precio Venta</th>
+        <th>Código Barras</th>
+        <th>Tipo Producto</th>
+        <th>Clave Categoría</th>
+        <th>Clave Unidad Medida</th>
+        <th>Clave Unidad Venta</th>
+        <th>Clave Proveedor</th>
+        <th>Presentación</th>
         <th>Imagen</th>
         <th>Operaciones</th>
       </tr>
     </thead>
 
     <tbody>
-     <tr *ngFor="let producto of products">
-
-
+      <tr *ngFor="let producto of products">
         <td>{{ producto.nombre }}</td>
         <td>{{ producto.descripcion }}</td>
         <td>{{ producto.precio | currency:'MXN' }}</td>
         <td>{{ producto.cantidad }}</td>
+        <td>{{ producto.margen_ganancia }}</td>
+        <td>{{ producto.precio_venta | currency:'MXN' }}</td>
+        <td>{{ producto.codigo_barras }}</td>
+        <td>{{ producto.tipo_producto }}</td>
+        <td>{{ producto.claveCategoria }}</td>
+        <td>{{ producto.claveUnidadMedida }}</td>
+        <td>{{ producto.claveUnidadVenta }}</td>
+        <td>{{ producto.claveProveedor }}</td>
+        <td>{{ producto.presentacion }}</td>
 
+        <!-- Imagen -->
         <td>
-          <img *ngIf="producto.imagenUrl"
+          <img *ngIf="producto.imagenUrl; else noImage"
                [src]="producto.imagenUrl"
-               width="50">
+               width="50" class="rounded">
+          <ng-template #noImage>
+            <span class="text-muted">Sin imagen</span>
+          </ng-template>
         </td>
 
+        <!-- Operaciones -->
         <td>
-          <button class="btn-editar"
-                  (click)="onEdit(producto)">
+          <button class="btn-editar" (click)="onEdit(producto)">
             <i class="bx bx-edit"></i>
           </button>
-
-          <button class="btn-eliminar"
-                  (click)="onDelete(producto)">
+          <button class="btn-eliminar" (click)="onDelete(producto)">
             <i class="bx bx-trash"></i>
           </button>
         </td>
-
       </tr>
     </tbody>
   </table>

@@ -8,7 +8,8 @@ export interface Product {
   descripcion: string;
   precio: number;
   cantidad: number;
-  imagenUrl?: string;
+  imagenUrl?: string;     // URL para mostrar la imagen
+  imagenFile?: File;      // 👈 archivo seleccionado
   margen_ganancia: number;
   precio_venta: number;
   codigo_barras: string;
@@ -17,6 +18,9 @@ export interface Product {
   claveUnidadMedida: string;
   claveUnidadVenta: string;
   claveProveedor: string;
+  presentacion: string;
+  caducidad: boolean;
+  estado: boolean;
 }
 
 @Component({
@@ -41,7 +45,11 @@ export class ProductsForm {
     claveCategoria: '',
     claveUnidadMedida: '',
     claveUnidadVenta: '',
-    claveProveedor: ''
+    claveProveedor: '',
+    presentacion: '',
+    caducidad: false,
+    estado: true,
+    imagenFile: undefined
   };
 
   @Input() mode: 'create' | 'edit' = 'create';
@@ -50,7 +58,7 @@ export class ProductsForm {
   @Output() save = new EventEmitter<Product>();
   @Output() close = new EventEmitter<void>();
 
-  showErrorModal = false; // 👈 para mostrar modal de error
+  showErrorModal = false;
 
   onSubmit() {
     if (
@@ -60,14 +68,14 @@ export class ProductsForm {
       !this.product.cantidad ||
       !this.product.margen_ganancia ||
       !this.product.precio_venta ||
-      !this.product.codigo_barras ||
+      !this.product.presentacion ||
       !this.product.tipo_producto ||
       !this.product.claveCategoria ||
       !this.product.claveUnidadMedida ||
       !this.product.claveUnidadVenta ||
       !this.product.claveProveedor
     ) {
-      this.showErrorModal = true; // activa modal de error
+      this.showErrorModal = true;
       return;
     }
 
@@ -81,9 +89,10 @@ export class ProductsForm {
   onFileSelected(event: any) {
     const file = event.target.files[0];
     if (file) {
+      this.product.imagenFile = file; // 👈 guardamos el archivo
       const reader = new FileReader();
       reader.onload = () => {
-        this.product.imagenUrl = reader.result as string;
+        this.product.imagenUrl = reader.result as string; // preview
       };
       reader.readAsDataURL(file);
     }

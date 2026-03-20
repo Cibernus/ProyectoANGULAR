@@ -7,7 +7,8 @@ export interface Product {
   descripcion: string;
   precio: number;
   cantidad: number;
-  imagenUrl?: string;
+  imagenUrl?: string;     // URL para mostrar la imagen
+  imagenFile?: File;      // 👈 archivo seleccionado en el formulario
   margen_ganancia: number;
   precio_venta: number;
   codigo_barras: string;
@@ -16,6 +17,9 @@ export interface Product {
   claveUnidadMedida: string;
   claveUnidadVenta: string;
   claveProveedor: string;
+  presentacion: string;
+  caducidad: boolean;
+  estado: boolean;
 }
 
 @Component({

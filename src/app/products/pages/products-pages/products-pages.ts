@@ -28,7 +28,6 @@ export class ProductsPages {
   formMode: 'create' | 'edit' = 'create';
   showForm = false;
 
-  // 🔹 URL base unificada
   private readonly API_URL = 'http://localhost:5027/api/Producto';
 
   constructor(private http: HttpClient) {}
@@ -72,17 +71,38 @@ export class ProductsPages {
     this.showForm = true;
   }
 
-  // 🔹 Guardar producto (POST o PUT)
+  // 🔹 Guardar producto (POST o PUT) usando FormData
   saveProduct(product: Product) {
+    const formData = new FormData();
+    formData.append('nombre', product.nombre);
+    formData.append('descripcion', product.descripcion);
+    formData.append('precio', product.precio.toString());
+    formData.append('cantidad', product.cantidad.toString());
+    formData.append('margen_ganancia', product.margen_ganancia.toString());
+    formData.append('precio_venta', product.precio_venta.toString());
+    formData.append('codigo_barras', product.codigo_barras);
+    formData.append('tipo_producto', product.tipo_producto);
+    formData.append('claveCategoria', product.claveCategoria);
+    formData.append('claveUnidadMedida', product.claveUnidadMedida);
+    formData.append('claveUnidadVenta', product.claveUnidadVenta);
+    formData.append('claveProveedor', product.claveProveedor);
+    formData.append('presentacion', product.presentacion);
+    formData.append('caducidad', product.caducidad.toString());
+    formData.append('estado', product.estado.toString());
+
+    if (product.imagenFile) {
+      formData.append('Imagen', product.imagenFile);
+    }
+
     if (this.formMode === 'create') {
-      this.http.post<Product>(this.API_URL, product)
+      this.http.post<Product>(this.API_URL, formData)
         .subscribe(newProduct => {
           this.products.push(newProduct);
           this.filteredProducts = [...this.products];
           this.closeForm();
         });
     } else {
-      this.http.put<Product>(`${this.API_URL}/${product.claveProducto}`, product)
+      this.http.put<Product>(`${this.API_URL}/actualizarProducto/${product.claveProducto}`, formData)
         .subscribe(updated => {
           const index = this.products.findIndex(p => p.claveProducto === product.claveProducto);
           if (index !== -1) {
@@ -97,7 +117,7 @@ export class ProductsPages {
   // 🔹 Eliminar producto
   deleteProduct(product: Product) {
     if (confirm(`¿Eliminar ${product.nombre}?`)) {
-      this.http.delete(`${this.API_URL}/${product.claveProducto}`)
+      this.http.delete(`${this.API_URL}/eliminarProducto${product.claveProducto}`)
         .subscribe(() => {
           this.products = this.products.filter(p => p.claveProducto !== product.claveProducto);
           this.filteredProducts = [...this.products];
@@ -120,6 +140,7 @@ export class ProductsPages {
       precio: 0,
       cantidad: 0,
       imagenUrl: '',
+      imagenFile: undefined,   // archivo de imagen
       margen_ganancia: 0,
       precio_venta: 0,
       codigo_barras: '',
@@ -127,7 +148,10 @@ export class ProductsPages {
       claveCategoria: '',
       claveUnidadMedida: '',
       claveUnidadVenta: '',
-      claveProveedor: ''
+      claveProveedor: '',
+      presentacion: '',   // 👈 agregado
+      caducidad: false,   // 👈 agregado
+      estado: true        // 👈 agregado
     };
   }
 }
