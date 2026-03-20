@@ -1,0 +1,83 @@
+<div class="offcanvas offcanvas-end" 
+     [class.show]="visible" 
+     tabindex="-1">
+  <div class="offcanvas-header">
+    <h5>{{ mode === 'create' ? 'Agregar Usuario' : 'Actualizar Usuario' }}</h5>
+    <button type="button" class="btn-close" (click)="onClose()"></button>
+  </div>
+  
+  <div class="offcanvas-body">
+    <form (ngSubmit)="onSubmit()">
+      <div class="mb-3">
+        <label class="form-label">Nombre</label>
+        <input 
+          type="text" 
+          class="form-control" 
+          [(ngModel)]="user.nombre"
+          name="nombre"
+          required>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Apellido Paterno</label>
+        <input 
+          type="text" 
+          class="form-control" 
+          [(ngModel)]="user.apellidoPaterno"
+          name="apellidoPaterno"
+          required>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Apellido Materno</label>
+        <input 
+          type="text" 
+          class="form-control" 
+          [(ngModel)]="user.apellidoMaterno"
+          name="apellidoMaterno">
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Teléfono</label>
+        <input 
+          type="tel" 
+          class="form-control" 
+          [(ngModel)]="user.telefono"
+          name="telefono"
+          required>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Correo</label>
+        <input 
+          type="email" 
+          class="form-control" 
+          [(ngModel)]="user.correo"
+          name="correo"
+          required>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Rol</label>
+        <select 
+          class="form-control" 
+          [(ngModel)]="user.rol"
+          name="rol"
+          required>
+          <option value="">Seleccionar...</option>
+          <option value="Admin">Admin</option>
+          <option value="Usuario">Usuario</option>
+        </select>
+      </div>
+
+      <button type="submit" class="btn btn-primary">
+        {{ mode === 'create' ? 'Agregar' : 'Actualizar' }}
+      </button>
+    </form>
+  </div>
+</div>
+
+<div class="offcanvas-backdrop fade" 
+     [class.show]="visible" 
+     (click)="onClose()"
+     *ngIf="visible"></div>

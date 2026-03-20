@@ -1,0 +1,33 @@
+<div class="tablas-informacion">
+  <table>
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Apellido Paterno</th>
+        <th>Apellido Materno</th>
+        <th>Teléfono</th>
+        <th>Correo electrónico</th>
+        <th>Rol</th>
+        <th>Operaciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of users">
+        <td>{{ user.nombre }}</td>
+        <td>{{ user.apellidoPaterno }}</td>
+        <td>{{ user.apellidoMaterno }}</td>
+        <td>{{ user.telefono }}</td>
+        <td>{{ user.correo }}</td>
+        <td>{{ user.rol }}</td>
+        <td>
+          <button class="btn-editar" (click)="onEdit(user)">
+            <i class='bx bx-edit'></i>
+          </button>
+          <button class="btn-eliminar" (click)="onDelete(user)">
+            <i class='bx bx-trash'></i>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,31 @@
+<div class="tablas-informacion">
+  <table>
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Apellido Paterno</th>
+        <th>Apellido Materno</th>
+        <th>Teléfono</th>
+        <th>Curp</th>
+        <th>Operaciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let employee of employees">
+        <td>{{ employee.nombre }}</td>
+        <td>{{ employee.apellido_paterno }}</td>
+        <td>{{ employee.apellido_materno }}</td>
+        <td>{{ employee.telefono }}</td>
+        <td>{{ employee.curp }}</td>
+        <td>
+          <button class="btn-editar" (click)="onEdit(employee)">
+            <i class='bx bx-edit'></i>
+          </button>
+          <button class="btn-eliminar" (click)="onDelete(employee)">
+            <i class='bx bx-trash'></i>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,107 @@
+#imagen {
+  width: 50px;
+  height: auto;
+  margin: 10px 0;
+  display: block;
+  padding: 5px;
+  border-radius: 10px;
+}
+
+.barra-lateral {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 250px;
+  padding: 20px 14px;
+  background: var(--color-barra-lateral);
+  transition: var(--tran-03);
+  z-index: 1050;
+}
+
+.menu-barra {
+  display: flex;
+  flex-direction: column;
+  height: calc(100% - 55px);
+  justify-content: space-between;
+
+  overflow-y: auto;       /* <- esto es todo lo que necesitas */
+  overflow-x: hidden;
+  scrollbar-width: none; /* scroll delgado en Firefox */
+}
+
+/* Opcional: estilizar el scroll en Chrome/Edge */
+.menu-barra::-webkit-scrollbar {
+  width: 0px;
+}
+
+.menu-barra::-webkit-scrollbar-thumb {
+  background-color: rgba(255,255,255,0.2);
+  border-radius: 4px;
+}
+
+.enlaces-menu {
+  list-style: none;
+}
+
+.enlace-nav {
+  height: 50px;
+  display: flex;
+  align-items: center;
+  margin: 10px 0;
+}
+
+.barra-lateral .icon {
+  min-width: 50px; /* 60px antes - tamaño de los iconos de los modulos */
+  font-size: 18px; /* 20px antes - para hacerlo un poco mas ligero */
+}
+
+.barra-lateral .texto {
+  color: var(--color-texto);
+  font-size: 14px; /* 17px antes - tamaño del texto de los modulos */
+  font-weight: 400; /* 500 antes - tamaño del contenedor de los modulos */
+  transition: var(--tran-03);
+}
+
+.barra-lateral li a {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  border-radius: 6px;
+  text-decoration: none;
+  color: var(--color-texto);
+  transition: var(--tran-03);
+  padding: 10px;
+}
+
+.barra-lateral li a:hover {
+  background-color: var(--color-fondo);
+  color: var(--color-barra-lateral);
+  border: 2px solid var(--color-barra-lateral);
+}
+
+.barra-lateral li a:hover .icon,
+.barra-lateral li a:hover .texto {
+  color: var(--color-barra-lateral);
+}
+
+.barra-lateral .contenido-inferior {
+  margin-top: auto;
+}
+
+#cambiar_usuario {
+  border: none;
+  outline: none;
+}
+
+.barra-lateral li a.active-link {
+  background-color: var(--color-fondo);
+  color: var(--color-barra-lateral);
+  border: 2px solid var(--color-barra-lateral);
+}
+
+.barra-lateral li a.active-link .icon,
+.barra-lateral li a.active-link .texto {
+  color: var(--color-barra-lateral);
+}

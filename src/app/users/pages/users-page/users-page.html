@@ -1,0 +1,27 @@
+<header class="dashboard-header">
+  <h2 class="titulo-dashboard">Usuarios</h2>
+  <div class="acciones-header">
+    <app-notifications-dropdown></app-notifications-dropdown>
+    <app-user-dropdown></app-user-dropdown>
+  </div>
+</header>
+
+<div class="container-fluid">
+  <app-users-toolbar (search)="onSearch($event)" (add)="openAddForm()"> </app-users-toolbar>
+
+  <app-users-table
+    [users]="filteredUsers"
+    (edit)="openEditForm($event)"
+    (delete)="deleteUser($event)"
+  >
+  </app-users-table>
+</div>
+
+<app-user-form
+  [user]="selectedUser"
+  [mode]="formMode"
+  [visible]="showForm"
+  (save)="saveUser($event)"
+  (close)="closeForm()"
+>
+</app-user-form>

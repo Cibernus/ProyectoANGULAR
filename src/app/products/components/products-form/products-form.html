@@ -1,0 +1,141 @@
+<div class="offcanvas offcanvas-end"
+     [class.show]="visible"
+     tabindex="-1"
+     [style.visibility]="visible ? 'visible' : 'hidden'">
+
+  <div class="offcanvas-header border-bottom">
+    <h5 class="offcanvas-title">
+      {{ mode === 'create' ? 'Agregar Producto' : 'Actualizar Producto' }}
+    </h5>
+    <button type="button"
+            class="btn-close"
+            (click)="onClose()">
+    </button>
+  </div>
+
+  <!-- 👇 Todo el formulario debe ir dentro de offcanvas-body -->
+  <div class="offcanvas-body">
+    <form (ngSubmit)="onSubmit()">
+
+      <!-- Nombre -->
+      <div class="mb-4">
+        <label class="form-label fw-semibold">Nombre</label>
+        <input type="text" class="form-control"
+               [(ngModel)]="product.nombre"
+               name="nombre" required>
+      </div>
+
+      <!-- Descripción -->
+      <div class="mb-4">
+        <label class="form-label fw-semibold">Descripción</label>
+        <textarea class="form-control"
+                  [(ngModel)]="product.descripcion"
+                  name="descripcion"
+                  rows="3" required></textarea>
+      </div>
+
+      <!-- Precio -->
+      <div class="mb-4">
+        <label class="form-label fw-semibold">Precio</label>
+        <input type="number" step="0.01" class="form-control"
+               [(ngModel)]="product.precio"
+               name="precio" required>
+      </div>
+
+      <!-- Cantidad -->
+      <div class="mb-4">
+        <label class="form-label fw-semibold">Cantidad</label>
+        <input type="number" step="0.01" class="form-control"
+               [(ngModel)]="product.cantidad"
+               name="cantidad" required>
+      </div>
+
+      <!-- Margen de Ganancia -->
+      <div class="mb-4">
+        <label class="form-label fw-semibold">Margen de Ganancia (%)</label>
+        <input type="number" step="0.01" class="form-control"
+               [(ngModel)]="product.margen_ganancia"
+               name="margen_ganancia" required>
+      </div>
+
+      <!-- Precio de Venta -->
+      <div class="mb-4">
+        <label class="form-label fw-semibold">Precio de Venta</label>
+        <input type="number" step="0.01" class="form-control"
+               [(ngModel)]="product.precio_venta"
+               name="precio_venta" required>
+      </div>
+
+      <!-- Código de Barras -->
+      <div class="mb-4">
+        <label class="form-label fw-semibold">Código de Barras</label>
+        <input type="text" maxlength="13" class="form-control"
+               [(ngModel)]="product.codigo_barras"
+               name="codigo_barras" required>
+      </div>
+
+      <!-- Tipo de Producto -->
+      <div class="mb-4">
+        <label class="form-label fw-semibold">Tipo de Producto</label>
+        <input type="text" maxlength="15" class="form-control"
+               [(ngModel)]="product.tipo_producto"
+               name="tipo_producto" required>
+      </div>
+
+      <!-- Clave Categoria -->
+      <div class="mb-4">
+        <label class="form-label fw-semibold">Clave Categoría</label>
+        <input type="text" maxlength="18" class="form-control"
+               [(ngModel)]="product.claveCategoria"
+               name="claveCategoria" required>
+      </div>
+
+      <!-- Clave Unidad Medida -->
+      <div class="mb-4">
+        <label class="form-label fw-semibold">Clave Unidad de Medida</label>
+        <input type="text" maxlength="18" class="form-control"
+               [(ngModel)]="product.claveUnidadMedida"
+               name="claveUnidadMedida" required>
+      </div>
+
+      <!-- Clave Unidad Venta -->
+      <div class="mb-4">
+        <label class="form-label fw-semibold">Clave Unidad de Venta</label>
+        <input type="text" maxlength="18" class="form-control"
+               [(ngModel)]="product.claveUnidadVenta"
+               name="claveUnidadVenta" required>
+      </div>
+
+      <!-- Clave Proveedor -->
+      <div class="mb-4">
+        <label class="form-label fw-semibold">Clave Proveedor</label>
+        <input type="text" maxlength="18" class="form-control"
+               [(ngModel)]="product.claveProveedor"
+               name="claveProveedor" required>
+      </div>
+
+      <!-- Imagen -->
+      <div class="mb-4">
+        <label class="form-label fw-semibold">Imagen</label>
+        <input type="file" class="form-control"
+               (change)="onFileSelected($event)">
+      </div>
+
+      <div *ngIf="product.imagenUrl" class="mb-3">
+        <img [src]="product.imagenUrl" width="120" class="rounded">
+      </div>
+
+      <!-- Botón -->
+      <button type="submit" class="btn btn-primary w-100">
+        {{ mode === 'create' ? 'Agregar' : 'Actualizar' }}
+      </button>
+
+    </form>
+  </div> <!-- 👈 cierre correcto del offcanvas-body -->
+</div> <!-- 👈 cierre correcto del offcanvas -->
+
+<div class="offcanvas-backdrop fade"
+     [class.show]="visible"
+     (click)="onClose()"
+     *ngIf="visible">
+</div>

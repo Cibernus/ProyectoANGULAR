@@ -1,0 +1,33 @@
+<div class="dropdown">
+  <!-- BOTÓN TRIGGER -->
+  <button class="perfil-btn" type="button" (click)="toggle()">
+    <div class="perfil-avatar">{{ getInitials() }}</div>
+    <div class="perfil-info">
+      <span class="perfil-nombre">{{ userName }}</span>
+      <span class="perfil-rol">Administrador</span>
+    </div>
+    <i class="bx bx-chevron-down perfil-chevron" [class.rotado]="isOpen"></i>
+  </button>
+
+  <!-- DROPDOWN -->
+  <div class="dropdown-menu" [class.show]="isOpen">
+    <!-- CABECERA -->
+    <div class="drop-header">
+      <div class="drop-avatar">{{ getInitials() }}</div>
+      <div class="drop-nombre">{{ userName }}</div>
+      <div class="drop-rol">Administrador</div>
+    </div>
+
+    <div class="drop-divider"></div>
+
+    <!-- OPCIONES -->
+    <div class="drop-body">
+      <a class="drop-item" (click)="onPerfil()"> <i class="bx bx-user-circle"></i> Mi perfil </a>
+      <a class="drop-item" (click)="onConfig()"> <i class="bx bx-cog"></i> Configuración </a>
+      <div class="drop-divider"></div>
+      <a class="drop-item danger" (click)="onLogout()">
+        <i class="bx bx-log-out"></i> Cerrar sesión
+      </a>
+    </div>
+  </div>
+</div>

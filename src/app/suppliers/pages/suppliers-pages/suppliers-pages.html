@@ -1,0 +1,27 @@
+<header class="dashboard-header">
+  <h2 class="titulo-dashboard">Proveedores</h2>
+  <div class="acciones-header">
+    <app-notifications-dropdown></app-notifications-dropdown>
+    <app-user-dropdown></app-user-dropdown>
+  </div>
+</header>
+
+<div class="container-fluid">
+  <app-suppliers-toolbar (search)="onSearch($event)" (add)="openAddForm()"> </app-suppliers-toolbar>
+
+  <app-suppliers-table
+    [suppliers]="filteredSuppliers"
+    (edit)="openEditForm($event)"
+    (delete)="deleteSupplier($event)"
+  >
+  </app-suppliers-table>
+</div>
+
+<app-suppliers-form
+  [supplier]="selectedSupplier"
+  [mode]="formMode"
+  [visible]="showForm"
+  (save)="saveSupplier($event)"
+  (close)="closeForm()"
+>
+</app-suppliers-form>

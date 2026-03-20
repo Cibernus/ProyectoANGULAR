@@ -1,0 +1,88 @@
+<div class="offcanvas offcanvas-end" 
+     [class.show]="visible" 
+     tabindex="-1">
+  <div class="offcanvas-header">
+    <h5>{{ mode === 'create' ? 'Agregar Entrega' : 'Actualizar Entrega' }}</h5>
+    <button type="button" class="btn-close" (click)="onClose()"></button>
+  </div>
+  
+  <div class="offcanvas-body">
+    <form (ngSubmit)="onSubmit()">
+
+      <div class="mb-3">
+        <label class="form-label">Fecha de Entrega</label>
+        <input 
+          type="date" 
+          class="form-control" 
+          [(ngModel)]="delivery.fecha_entrega"
+          name="fecha_entrega"
+          required>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Estado</label>
+        <select 
+          class="form-control" 
+          [(ngModel)]="delivery.estado"
+          name="estado"
+          required>
+          <option value="">Seleccionar...</option>
+          <option value="Pendiente">Pendiente</option>
+          <option value="Entregado">Entregado</option>
+        </select>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Total</label>
+        <input 
+          type="number" 
+          class="form-control" 
+          [(ngModel)]="delivery.total"
+          name="total"
+          required>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Descripción</label>
+        <input 
+          type="text" 
+          class="form-control" 
+          [(ngModel)]="delivery.descripcion"
+          name="descripcion">
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Tipo de Entrega</label>
+        <select 
+          class="form-control" 
+          [(ngModel)]="delivery.tipo_entrea"
+          name="tipo_entrea"
+          required>
+          <option value="">Seleccionar...</option>
+          <option value="Pedido">Pedido</option>
+          <option value="Compra">Compra</option>
+        </select>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Clave Pedido</label>
+        <input 
+          type="text" 
+          class="form-control" 
+          [(ngModel)]="delivery.clavepedido"
+          name="clavepedido"
+          required>
+      </div>
+
+      <button type="submit" class="btn btn-primary">
+        {{ mode === 'create' ? 'Agregar' : 'Actualizar' }}
+      </button>
+
+    </form>
+  </div>
+</div>
+
+<div class="offcanvas-backdrop fade" 
+     [class.show]="visible" 
+     (click)="onClose()"
+     *ngIf="visible"></div>

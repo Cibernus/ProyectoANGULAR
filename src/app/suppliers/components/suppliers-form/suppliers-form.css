@@ -1,0 +1,102 @@
+/* ====== SUPPLIERS FORM (OFFCANVAS) ====== */
+.offcanvas-end {
+  width: 400px !important;
+}
+
+.offcanvas-header {
+  padding: 20px 24px;
+  border-bottom: 1px solid #e5e7eb;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.offcanvas-header h5 {
+  margin: 0;
+  font-size: var(--t-lg);
+  font-weight: 700;
+  font-family: 'Poppins', sans-serif;
+  color: #111827;
+}
+
+.offcanvas-title {
+  font-size: var(--t-lg);
+  font-weight: 600;
+  font-family: 'Poppins', sans-serif;
+  color: #111827;
+}
+
+.offcanvas-body {
+  padding: 24px;
+}
+
+.form-label {
+  font-size: var(--t-base);
+  font-weight: 600;
+  font-family: 'Poppins', sans-serif;
+  color: #374151;
+  margin-bottom: 6px;
+}
+
+.form-control {
+  border: 1px solid #e0e0e0;
+  padding: 10px 14px;
+  font-size: var(--t-base);
+  font-family: 'Poppins', sans-serif;
+  border-radius: 6px;
+  color: #111827;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.form-control:focus {
+  border-color: var(--color-barra-lateral);
+  box-shadow: 0 0 0 3px rgba(66, 153, 255, 0.15);
+  outline: none;
+}
+
+.form-control::placeholder {
+  color: #9ca3af;
+  font-size: var(--t-base);
+}
+
+select.form-control {
+  cursor: pointer;
+}
+
+.btn-primary {
+  background-color: var(--color-barra-lateral);
+  border: none;
+  font-size: var(--t-sm);
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  border-radius: 8px;
+  padding: 10px 20px;
+  transition: background-color 0.2s ease;
+}
+
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active {
+  background-color: #2980d9 !important;
+  border-color: #2980d9 !important;
+  box-shadow: none !important;
+}
+
+.btn-secondary {
+  background-color: #f3f4f6;
+  border: 1px solid #e5e7eb;
+  color: #374151;
+  font-size: var(--t-sm);
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  border-radius: 8px;
+  padding: 10px 20px;
+  transition: background-color 0.2s ease;
+}
+
+.btn-secondary:hover {
+  background-color: #e5e7eb;
+  color: #111827;
+}

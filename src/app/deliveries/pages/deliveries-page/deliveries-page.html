@@ -1,0 +1,31 @@
+<header class="dashboard-header">
+  <h2 class="titulo-dashboard">Entregas</h2>
+
+  <div class="acciones-header">
+    <app-notifications-dropdown></app-notifications-dropdown>
+    <app-user-dropdown></app-user-dropdown>
+  </div>
+</header>
+
+<div class="container-fluid">
+
+  <app-deliveries-toolbar
+    (search)="onSearch($event)"
+    (add)="openAddForm()">
+  </app-deliveries-toolbar>
+
+  <app-deliveries-table
+    [deliveries]="filteredDeliveries"
+    (edit)="openEditForm($event)"
+    (delete)="deleteDelivery($event)">
+  </app-deliveries-table>
+
+</div>
+
+<app-delivery-form
+  [delivery]="selectedDelivery"
+  [mode]="formMode"
+  [visible]="showForm"
+  (save)="saveDelivery($event)"
+  (close)="closeForm()">
+</app-delivery-form>

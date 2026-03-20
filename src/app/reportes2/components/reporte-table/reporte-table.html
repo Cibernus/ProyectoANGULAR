@@ -1,0 +1,19 @@
+<div class="tablas-informacion">
+  <table>
+    <thead>
+      <tr>
+        <th *ngFor="let col of columnas">{{ col.titulo }}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let fila of datos">
+        <td *ngFor="let col of columnas">
+          {{ formatearValor(fila[col.campo], col.tipo) }}
+        </td>
+      </tr>
+      <tr *ngIf="datos.length === 0">
+        <td [attr.colspan]="columnas.length" class="sin-datos">No se encontraron resultados.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

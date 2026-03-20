@@ -1,0 +1,234 @@
+.ticket-container {
+  width: 81%;
+  margin-left: 17%;
+  margin-top: 20px;
+}
+
+.ticket {
+  height: auto;
+  width: 30%;
+  margin-left: 40%;
+  margin-top: 20px;
+  background-color: #ffffff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  overflow-x: auto;
+}
+
+.ticket-header {
+  text-align: center;
+  border-bottom: 2px dashed #333;
+  padding-bottom: 15px;
+  margin-bottom: 20px;
+}
+
+.negocio-nombre {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.ticket-header p {
+  margin: 5px 0;
+  color: #666;
+}
+
+#Tabla {
+  width: 100%;
+  border: 1px solid transparent;
+  border-collapse: collapse;
+}
+
+#Tabla th,
+#Tabla td {
+  border: 1px solid transparent;
+  text-align: left;
+  background-color: transparent;
+  padding: 5px;
+}
+
+#Tabla th {
+  background-color: #f0f0f0;
+  font-weight: bold;
+}
+
+#Tabla tbody tr:nth-child(odd):not(.resumen-row) {
+  background-color: #fafafa;
+}
+
+.resumen-row {
+  background-color: #f9f9f9 !important;
+}
+
+.resumen-label {
+  text-align: right;
+  font-weight: 500;
+  padding-right: 15px !important;
+}
+
+.resumen-valor {
+  text-align: right;
+  font-weight: 600;
+}
+
+.total-row {
+  background-color: #e8f4f8 !important;
+  font-size: 1.1em;
+}
+
+.total-row td {
+  padding: 12px 8px !important;
+}
+
+.ticket-footer {
+  text-align: center;
+  border-top: 2px dashed #333;
+  padding-top: 15px;
+  margin-top: 20px;
+}
+
+.mensaje-final {
+  font-style: italic;
+  color: #666;
+  margin: 0;
+  font-size: 14px;
+}
+
+td[colspan="4"] {
+  text-align: center;
+  padding: 10px;
+}
+
+#confirmación {
+  margin-top: 15px;
+  margin-left: -20px;
+}
+
+.confirmacion-botones {
+  margin-top: 15px;
+  text-align: center;
+}
+
+#Imprimir {
+  margin-left: 56%;
+  height: 40px;
+  margin-top: 20px;
+  border-radius: 5px;
+  width: 10%;
+  background-color: #4299FF;
+  color: #FFFFFF;
+  border: none;
+  cursor: pointer;
+  font-size: 12px;
+  padding: 10px 15px;
+}
+
+#Imprimir:hover {
+  opacity: 0.9;
+}
+
+#Cancelar {
+  position: absolute;
+  margin-left: -21%;
+  margin-top: 19px;
+  height: 40px;
+  width: 10%;
+  border-radius: 5px;
+  background-color: red;
+  color: #ffffff;
+  border: none;
+  cursor: pointer;
+  font-size: 12px;
+  padding: 10px 15px;
+}
+
+#Cancelar:hover {
+  opacity: 0.9;
+}
+
+/* Mejora la apariencia en pantallas pequeñas */
+@media (max-width: 600px) {
+  .ticket {
+    width: 80%;
+    margin-left: 10%;
+  }
+
+  #Tabla {
+    display: block;
+    overflow-x: auto;
+  }
+
+  #Tabla th,
+  #Tabla td {
+    display: block;
+    width: 100%;
+  }
+
+  #Tabla th {
+    position: absolute;
+    top: -9999px;
+  }
+
+  #Tabla td {
+    text-align: right;
+    position: relative;
+    padding-left: 50%;
+  }
+
+  #Tabla td:before {
+    position: absolute;
+    left: 10px;
+    width: calc(50% - 20px);
+    white-space: nowrap;
+    text-align: left;
+  }
+
+  #Tabla td:nth-of-type(1):before {
+    content: "Producto";
+  }
+
+  #Tabla td:nth-of-type(2):before {
+    content: "Cantidad";
+  }
+
+  #Tabla td:nth-of-type(3):before {
+    content: "Precio Unitario";
+  }
+
+  #Tabla td:nth-of-type(4):before {
+    content: "Total";
+  }
+
+  #Imprimir {
+    margin-left: 10%;
+    width: 35%;
+  }
+
+  #Cancelar {
+    position: relative;
+    margin-left: 5%;
+    margin-top: 20px;
+    width: 35%;
+  }
+}
+
+/* Estilos para impresión */
+@media print {
+  .ticket-container {
+    margin-left: 0;
+    width: 100%;
+  }
+
+  .confirmacion-botones,
+  #confirmación {
+    display: none;
+  }
+
+  .ticket {
+    border: none;
+    box-shadow: none;
+    width: 100%;
+    margin-left: 0;
+  }
+}

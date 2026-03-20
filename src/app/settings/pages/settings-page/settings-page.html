@@ -1,0 +1,275 @@
+<div class="dashboard-header">
+  <h1 class="titulo-dashboard">Configuración</h1>
+  <div class="acciones-header">
+    <app-notifications-dropdown></app-notifications-dropdown>
+    <app-user-dropdown></app-user-dropdown>
+  </div>
+</div>
+
+<div
+  class="alerta alerta-exito"
+  *ngIf="exito"
+  style="margin-left: 270px; margin-right: 20px; margin-bottom: 12px"
+>
+  <i class="bx bx-check-circle"></i> {{ exito }}
+</div>
+<div
+  class="alerta alerta-error"
+  *ngIf="error && !mostrarModal"
+  style="margin-left: 270px; margin-right: 20px; margin-bottom: 12px"
+>
+  <i class="bx bx-error-circle"></i> {{ error }}
+</div>
+
+<div class="config-container">
+  <div class="config-sidebar">
+    <div
+      class="seccion-item"
+      *ngFor="let s of secciones"
+      [class.activo]="seccionActiva === s.id"
+      (click)="cambiarSeccion(s.id)"
+    >
+      <i class="bx" [ngClass]="s.icono"></i>
+      {{ s.label }}
+    </div>
+  </div>
+
+  <div class="config-main">
+    <!-- UNIDADES DE MEDIDA -->
+    <ng-container *ngIf="seccionActiva === 'unidades-medida'">
+      <div class="primer-apartado">
+        <h2 class="seccion-titulo">Unidades de medida</h2>
+        <button class="btn-agregar" (click)="abrirModal()">
+          <i class="bx bx-plus"></i> Agregar
+        </button>
+      </div>
+      <div class="tablas-informacion">
+        <table>
+          <thead>
+            <tr>
+              <th>Nombre</th>
+              <th>Abreviatura</th>
+              <th>Tipo de stock</th>
+              <th>Estado</th>
+              <th>Operaciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let u of unidadesMedida">
+              <td>{{ u.nombre }}</td>
+              <td>{{ u.abreviatura }}</td>
+              <td>{{ u.tipoStock }}</td>
+              <td>{{ u.estado ? 'Activo' : 'Inactivo' }}</td>
+              <td>
+                <button class="btn-editar" (click)="abrirModal(u)">
+                  <i class="bx bx-edit"></i>
+                </button>
+                <button
+                  class="btn-eliminar"
+                  (click)="eliminar('unidades-medida', u.idUnidadMedida)"
+                >
+                  <i class="bx bx-trash"></i>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </ng-container>
+
+    <!-- UNIDADES DE VENTA -->
+    <ng-container *ngIf="seccionActiva === 'unidades-venta'">
+      <div class="primer-apartado">
+        <h2 class="seccion-titulo">Unidades de venta</h2>
+        <button class="btn-agregar" (click)="abrirModal()">
+          <i class="bx bx-plus"></i> Agregar
+        </button>
+      </div>
+      <div class="tablas-informacion">
+        <table>
+          <thead>
+            <tr>
+              <th>Nombre</th>
+              <th>Abreviatura</th>
+              <th>Tipo de valor</th>
+              <th>Estado</th>
+              <th>Operaciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let u of unidadesVenta">
+              <td>{{ u.nombre }}</td>
+              <td>{{ u.abreviatura }}</td>
+              <td>{{ u.tipoValor }}</td>
+              <td>{{ u.estado ? 'Activo' : 'Inactivo' }}</td>
+              <td>
+                <button class="btn-editar" (click)="abrirModal(u)">
+                  <i class="bx bx-edit"></i>
+                </button>
+                <button class="btn-eliminar" (click)="eliminar('unidades-venta', u.idUnidadVenta)">
+                  <i class="bx bx-trash"></i>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </ng-container>
+
+    <!-- UNIDADES DE COMPRA -->
+    <ng-container *ngIf="seccionActiva === 'unidades-compra'">
+      <div class="primer-apartado">
+        <h2 class="seccion-titulo">Unidades de compra</h2>
+        <button class="btn-agregar" (click)="abrirModal()">
+          <i class="bx bx-plus"></i> Agregar
+        </button>
+      </div>
+      <div class="tablas-informacion">
+        <table>
+          <thead>
+            <tr>
+              <th>Nombre</th>
+              <th>Abreviatura</th>
+              <th>Tipo de stock</th>
+              <th>Estado</th>
+              <th>Operaciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let u of unidadesCompra">
+              <td>{{ u.nombre }}</td>
+              <td>{{ u.abreviatura }}</td>
+              <td>{{ u.tipoStock }}</td>
+              <td>{{ u.estado ? 'Activo' : 'Inactivo' }}</td>
+              <td>
+                <button class="btn-editar" (click)="abrirModal(u)">
+                  <i class="bx bx-edit"></i>
+                </button>
+                <button
+                  class="btn-eliminar"
+                  (click)="eliminar('unidades-compra', u.idUnidadCompra)"
+                >
+                  <i class="bx bx-trash"></i>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </ng-container>
+
+    <!-- CATEGORÍAS -->
+    <ng-container *ngIf="seccionActiva === 'categorias'">
+      <div class="primer-apartado">
+        <h2 class="seccion-titulo">Categorías</h2>
+        <button class="btn-agregar" (click)="abrirModal()">
+          <i class="bx bx-plus"></i> Agregar
+        </button>
+      </div>
+      <div class="tablas-informacion">
+        <table>
+          <thead>
+            <tr>
+              <th>Nombre</th>
+              <th>Descripción</th>
+              <th>Operaciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let c of categorias">
+              <td>{{ c.nombre }}</td>
+              <td>{{ c.descripcion }}</td>
+              <td>
+                <button class="btn-editar" (click)="abrirModal(c)">
+                  <i class="bx bx-edit"></i>
+                </button>
+                <button class="btn-eliminar" (click)="eliminar('categorias', c.idCategoria)">
+                  <i class="bx bx-trash"></i>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </ng-container>
+
+    <!-- IMPUESTOS -->
+    <ng-container *ngIf="seccionActiva === 'impuestos'">
+      <div class="primer-apartado">
+        <h2 class="seccion-titulo">Impuestos</h2>
+      </div>
+      <div class="impuesto-card">
+        <label class="form-label">Porcentaje de IVA (%)</label>
+        <div class="impuesto-row">
+          <input
+            class="form-control impuesto-input"
+            type="number"
+            [(ngModel)]="impuesto.porcentaje"
+          />
+          <button class="btn-agregar" (click)="guardarImpuesto()">Guardar</button>
+        </div>
+        <p class="impuesto-aviso">Este valor se aplica en DetalleVenta y DetalleCompraDirecta.</p>
+      </div>
+    </ng-container>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal-backdrop" *ngIf="mostrarModal" (click)="cerrarModal()"></div>
+<div class="modal-box" *ngIf="mostrarModal">
+  <div class="modal-header">
+    <span class="modal-titulo">{{ itemEditando ? 'Editar registro' : 'Agregar registro' }}</span>
+    <button class="btn-close" (click)="cerrarModal()">✕</button>
+  </div>
+  <div class="modal-body">
+    <div class="alerta alerta-error" *ngIf="error" style="margin-bottom: 12px">
+      <i class="bx bx-error-circle"></i> {{ error }}
+    </div>
+    <ng-container *ngIf="seccionActiva !== 'categorias'">
+      <div class="mb-3">
+        <label class="form-label">Nombre</label>
+        <input class="form-control" [(ngModel)]="nuevoItem.nombre" placeholder="Nombre" />
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Abreviatura</label>
+        <input class="form-control" [(ngModel)]="nuevoItem.abreviatura" placeholder="Ej. kg, pza" />
+      </div>
+      <div class="mb-3" *ngIf="seccionActiva === 'unidades-venta'">
+        <label class="form-label">Tipo de valor</label>
+        <input
+          class="form-control"
+          [(ngModel)]="nuevoItem.tipoValor"
+          placeholder="Ej. Unidad, Paquete"
+        />
+      </div>
+      <div class="mb-3" *ngIf="seccionActiva !== 'unidades-venta'">
+        <label class="form-label">Tipo de stock</label>
+        <input
+          class="form-control"
+          [(ngModel)]="nuevoItem.tipoStock"
+          placeholder="Ej. Peso, Volumen, Unidad"
+        />
+      </div>
+    </ng-container>
+    <ng-container *ngIf="seccionActiva === 'categorias'">
+      <div class="mb-3">
+        <label class="form-label">Nombre</label>
+        <input
+          class="form-control"
+          [(ngModel)]="nuevoItem.nombre"
+          placeholder="Nombre de la categoría"
+        />
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Descripción</label>
+        <input class="form-control" [(ngModel)]="nuevoItem.descripcion" placeholder="Descripción" />
+      </div>
+    </ng-container>
+  </div>
+  <div class="modal-footer">
+    <button class="btn-secondary" (click)="cerrarModal()">Cancelar</button>
+    <button class="btn-primary" (click)="guardarItem()">
+      {{ itemEditando ? 'Actualizar' : 'Guardar' }}
+    </button>
+  </div>
+</div>

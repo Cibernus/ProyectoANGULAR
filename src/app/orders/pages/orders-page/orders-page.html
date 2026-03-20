@@ -1,0 +1,31 @@
+<header class="dashboard-header">
+  <h2 class="titulo-dashboard">Pedidos</h2>
+
+  <div class="acciones-header">
+    <app-notifications-dropdown></app-notifications-dropdown>
+    <app-user-dropdown></app-user-dropdown>
+  </div>
+</header>
+
+<div class="container-fluid">
+
+  <app-orders-toolbar
+    (search)="onSearch($event)"
+    (add)="openForm()">
+  </app-orders-toolbar>
+
+  <app-orders-table
+    [orders]="filteredOrders"
+    (edit)="editOrder($event)"
+    (delete)="deleteOrder($event)">
+  </app-orders-table>
+
+</div>
+
+<app-order-form
+  [isOpen]="isFormOpen"
+  [isEditMode]="isEditMode"
+  [order]="selectedOrder"
+  (save)="saveOrder($event)"
+  (closeForm)="closeForm()">
+</app-order-form>

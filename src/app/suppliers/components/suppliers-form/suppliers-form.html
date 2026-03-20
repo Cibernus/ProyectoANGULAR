@@ -1,0 +1,91 @@
+<div class="offcanvas offcanvas-end" 
+     [class.show]="visible" 
+     tabindex="-1"
+     style="width: 400px;">
+  <div class="offcanvas-header border-bottom">
+    <h5 class="offcanvas-title">
+      {{ mode === 'create' ? 'Agregar Proveedor' : 'Actualizar Proveedor' }}
+    </h5>
+    <button type="button" class="btn-close" (click)="onClose()"></button>
+  </div>
+  
+  <div class="offcanvas-body">
+    <form [id]="mode === 'create' ? 'formAgregarProveedor' : 'formActualizarProveedor'" (ngSubmit)="onSubmit()">
+      
+      <div class="mb-4">
+        <label class="form-label fw-semibold mb-2">Nombre</label>
+        <input 
+          type="text" 
+          class="form-control" 
+          [(ngModel)]="supplier.nombre"
+          name="nombre"
+          placeholder="Nombre"
+          required>
+        <span class="error-message"></span>
+      </div>
+
+      <div class="mb-4">
+        <label class="form-label fw-semibold mb-2">Apellido Paterno</label>
+        <input 
+          type="text" 
+          class="form-control" 
+          [(ngModel)]="supplier.apellidoPaterno"
+          name="apellidoPaterno"
+          placeholder="Apellido Paterno"
+          required>
+        <span class="error-message"></span>
+      </div>
+
+      <div class="mb-4">
+        <label class="form-label fw-semibold mb-2">Apellido Materno</label>
+        <input 
+          type="text" 
+          class="form-control" 
+          [(ngModel)]="supplier.apellidoMaterno"
+          name="apellidoMaterno"
+          placeholder="Apellido Materno"
+          required>
+        <span class="error-message"></span>
+      </div>
+
+      <div class="mb-4">
+        <label class="form-label fw-semibold mb-2">Teléfono</label>
+        <input 
+          type="tel" 
+          class="form-control" 
+          [(ngModel)]="supplier.telefono"
+          name="telefono"
+          placeholder="Teléfono"
+          required>
+        <span class="error-message"></span>
+      </div>
+
+      <div class="mb-4">
+        <label class="form-label fw-semibold mb-2">RFC</label>
+        <input 
+          type="text" 
+          class="form-control" 
+          [(ngModel)]="supplier.rfc"
+          name="rfc"
+          placeholder="RFC"
+          required>
+        <span class="error-message"></span>
+      </div>
+
+      <div class="d-flex gap-3 mt-5">
+        <button type="button" class="btn btn-danger flex-fill" (click)="onClose()">
+          Cancelar
+        </button>
+        <button type="submit" class="btn btn-primary flex-fill">
+          {{ mode === 'create' ? 'Agregar' : 'Actualizar' }}
+        </button>
+      </div>
+
+    </form>
+  </div>
+</div>
+
+<div class="offcanvas-backdrop fade" 
+     [class.show]="visible" 
+     (click)="onClose()"
+     *ngIf="visible"></div>

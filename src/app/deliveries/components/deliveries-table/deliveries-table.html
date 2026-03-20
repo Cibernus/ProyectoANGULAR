@@ -1,0 +1,130 @@
+<div class="tablas-informacion">
+  <table>
+    <thead>
+      <tr>
+        <th>Clave Entrega</th>
+        <th>Fecha Entrega</th>
+        <th>Estado</th>
+        <th>Total</th>
+        <th>Descripción</th>
+        <th>Tipo Entrega</th>
+        <th>Clave Pedido</th>
+        <th>Operaciones</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let delivery of deliveries">
+        <td>{{ delivery.claveentrega }}</td>
+        <td>{{ delivery.fecha_entrega }}</td>
+        <td>{{ delivery.estado }}</td>
+        <td>{{ delivery.total }}</td>
+        <td>{{ delivery.descripcion }}</td>
+        <td>{{ delivery.tipo_entrea }}</td>
+        <td>{{ delivery.clavepedido }}</td>
+
+        <td class="td-operaciones">
+          <div class="btn-contenedor">
+
+            <button class="btn-editar" (click)="onEdit(delivery)">
+              <i class="bx bx-edit"></i>
+            </button>
+
+            <button class="btn-eliminar" (click)="onDelete(delivery)">
+              <i class="bx bx-trash"></i>
+            </button>
+
+            <button class="btn-detalle" (click)="onViewDetail(delivery)" title="Ver detalle">
+              <i class="bx bx-list-ul"></i>
+            </button>
+
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- MODAL DETALLE ENTREGA -->
+<div class="modal-overlay" *ngIf="isDetailOpen" (click)="closeDetail()">
+  <div class="modal-contenedor" (click)="$event.stopPropagation()">
+
+    <div class="modal-header">
+      <h3>Detalle de la Entrega <span>{{ selectedDeliveryDetail?.claveentrega }}</span></h3>
+      <button class="btn-cerrar-modal" (click)="closeDetail()">
+        <i class="bx bx-x"></i>
+      </button>
+    </div>
+
+    <div class="modal-info-pedido">
+      <div class="info-item">
+        <label>Estado</label>
+        <span>{{ selectedDeliveryDetail?.estado }}</span>
+      </div>
+      <div class="info-item">
+        <label>Fecha Entrega</label>
+        <span>{{ selectedDeliveryDetail?.fecha_entrega }}</span>
+      </div>
+      <div class="info-item">
+        <label>Clave Pedido</label>
+        <span>{{ selectedDeliveryDetail?.clavepedido }}</span>
+      </div>
+      <div class="info-item">
+        <label>Tipo Entrega</label>
+        <span>{{ selectedDeliveryDetail?.tipo_entrea }}</span>
+      </div>
+      <div class="info-item">
+        <label>Total</label>
+        <span>{{ selectedDeliveryDetail?.total | currency }}</span>
+      </div>
+      <div class="info-item full-width">
+        <label>Descripción</label>
+        <span>{{ selectedDeliveryDetail?.descripcion }}</span>
+      </div>
+    </div>
+
+    <div class="modal-body">
+      <h4>Productos de la Entrega</h4>
+
+      <ng-container *ngIf="selectedDeliveryDetail?.detalles?.length; else sinDetalles">
+        <table class="tabla-detalle">
+          <thead>
+            <tr>
+              <th>Proveedor</th>
+              <th>Producto</th>
+              <th>Cantidad</th>
+              <th>Precio Unit.</th>
+              <th>Subtotal</th>
+              <th>Tipo Detalle</th>
+              <th>Extra</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let det of selectedDeliveryDetail?.detalles">
+              <td>{{ det.claveproveedor }}</td>
+              <td>{{ det.claveproducto }}</td>
+              <td>{{ det.cantidad }}</td>
+              <td>{{ det.preciounitario | currency }}</td>
+              <td>{{ det.subtotal | currency }}</td>
+              <td>
+                <span class="badge" [ngClass]="getBadgeClass(det.tipo_detalle)">
+                  {{ det.tipo_detalle }}
+                </span>
+              </td>
+              <td>
+                <span class="badge" [ngClass]="det.extra ? 'badge-extra-si' : 'badge-extra-no'">
+                  {{ det.extra ? 'Sí' : 'No' }}
+                </span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </ng-container>
+
+      <ng-template #sinDetalles>
+        <p class="sin-datos">No hay productos registrados para esta entrega.</p>
+      </ng-template>
+    </div>
+
+  </div>
+</div>

@@ -1,0 +1,29 @@
+.primer-apartado {
+  background-color: #ffffff;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  margin-top: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.nueva-venta {
+  background-color: #4299FF;
+  color: #ffffff;
+  border: none;
+  font-size: 12px;
+  padding: 10px 15px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.nueva-venta:hover {
+  opacity: 0.9;
+}
+
+.nueva-venta i {
+  margin-right: 5px;
+}

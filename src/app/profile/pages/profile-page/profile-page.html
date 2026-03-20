@@ -1,0 +1,150 @@
+<div class="dashboard-header">
+  <h1 class="titulo-dashboard">Mi Perfil</h1>
+  <div class="acciones-header">
+    <app-notifications-dropdown></app-notifications-dropdown>
+    <app-user-dropdown></app-user-dropdown>
+  </div>
+</div>
+
+<div
+  class="alerta alerta-exito"
+  *ngIf="exito"
+  style="margin-left: 270px; margin-right: 20px; margin-bottom: 12px"
+>
+  <i class="bx bx-check-circle"></i> {{ exito }}
+</div>
+<div
+  class="alerta alerta-error"
+  *ngIf="error"
+  style="margin-left: 270px; margin-right: 20px; margin-bottom: 12px"
+>
+  <i class="bx bx-error-circle"></i> {{ error }}
+</div>
+
+<div class="perfil-container">
+  <div class="perfil-sidebar">
+    <div class="avatar-card">
+      <div class="avatar-circulo">{{ iniciales }}</div>
+      <div class="avatar-nombre">{{ usuario.nombreUsuario }}</div>
+      <span class="avatar-rol">{{ usuario.rol }}</span>
+    </div>
+    <div class="permisos-card">
+      <h3 class="card-titulo">Permisos del rol</h3>
+      <div class="permiso-item" *ngFor="let p of permisos">
+        <div class="permiso-icono" [class.acceso-si]="p.acceso" [class.acceso-no]="!p.acceso">
+          <i class="bx" [ngClass]="p.icono"></i>
+        </div>
+        <span class="permiso-nombre">{{ p.modulo }}</span>
+        <i
+          class="bx permiso-check"
+          [ngClass]="p.acceso ? 'bx-check-circle' : 'bx-x-circle'"
+          [class.check-si]="p.acceso"
+          [class.check-no]="!p.acceso"
+        >
+        </i>
+      </div>
+    </div>
+  </div>
+
+  <div class="perfil-main">
+    <div class="info-card">
+      <div class="card-header-row">
+        <h3 class="card-titulo">Datos personales</h3>
+        <button class="btn-editar-perfil" *ngIf="!modoEdicion" (click)="activarEdicion()">
+          <i class="bx bx-edit"></i> Editar
+        </button>
+      </div>
+      <div class="form-grid">
+        <div class="campo">
+          <label class="form-label">Nombre de usuario</label>
+          <input
+            class="form-control"
+            [(ngModel)]="usuario.nombreUsuario"
+            [readonly]="!modoEdicion"
+          />
+        </div>
+        <div class="campo">
+          <label class="form-label">Apellido Paterno</label>
+          <input
+            class="form-control"
+            [(ngModel)]="usuario.apellidoPaterno"
+            [readonly]="!modoEdicion"
+          />
+        </div>
+        <div class="campo">
+          <label class="form-label">Apellido Materno</label>
+          <input
+            class="form-control"
+            [(ngModel)]="usuario.apellidoMaterno"
+            [readonly]="!modoEdicion"
+          />
+        </div>
+        <div class="campo">
+          <label class="form-label">Teléfono</label>
+          <input class="form-control" [(ngModel)]="usuario.telefono" [readonly]="!modoEdicion" />
+        </div>
+        <div class="campo campo-full">
+          <label class="form-label">Correo electrónico</label>
+          <input
+            class="form-control"
+            [(ngModel)]="usuario.correoElectronico"
+            [readonly]="!modoEdicion"
+          />
+        </div>
+        <div class="campo">
+          <label class="form-label">Rol</label>
+          <input class="form-control readonly" [value]="usuario.rol" readonly />
+        </div>
+      </div>
+      <div class="form-acciones" *ngIf="modoEdicion">
+        <button class="btn-secondary" (click)="cancelarEdicion()">Cancelar</button>
+        <button class="btn-primary" (click)="guardarPerfil()">Guardar cambios</button>
+      </div>
+    </div>
+
+    <div class="info-card">
+      <div class="card-header-row">
+        <h3 class="card-titulo">Contraseña</h3>
+        <button class="btn-editar-perfil" (click)="toggleCambioContrasena()">
+          <i class="bx bx-lock-alt"></i>
+          {{ mostrarCambioContrasena ? 'Cancelar' : 'Cambiar contraseña' }}
+        </button>
+      </div>
+      <p class="contrasena-aviso" *ngIf="!mostrarCambioContrasena">
+        Por seguridad tu contraseña está cifrada y no es visible.
+      </p>
+      <div class="form-grid" *ngIf="mostrarCambioContrasena">
+        <div class="campo campo-full">
+          <label class="form-label">Contraseña actual</label>
+          <input
+            class="form-control"
+            type="password"
+            [(ngModel)]="cambioContrasena.contrasenaActual"
+            placeholder="Ingresa tu contraseña actual"
+          />
+        </div>
+        <div class="campo">
+          <label class="form-label">Nueva contraseña</label>
+          <input
+            class="form-control"
+            type="password"
+            [(ngModel)]="cambioContrasena.contrasenaNueva"
+            placeholder="Nueva contraseña"
+          />
+        </div>
+        <div class="campo">
+          <label class="form-label">Confirmar contraseña</label>
+          <input
+            class="form-control"
+            type="password"
+            [(ngModel)]="cambioContrasena.confirmar"
+            placeholder="Confirma la nueva contraseña"
+          />
+        </div>
+        <div class="campo campo-full form-acciones">
+          <button class="btn-primary" (click)="guardarContrasena()">Guardar contraseña</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,127 @@
+<div class="tablas-informacion">
+  <table>
+    <thead>
+      <tr>
+        <th>Clave Pedido</th>
+        <th>Fecha Pedido</th>
+        <th>Estado</th>
+        <th>Observaciones</th>
+        <th>Empleado</th>
+        <th>Tipo Pedido</th>
+        <th>Proveedor</th>
+        <th>Total</th>
+        <th>Operaciones</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let order of orders">
+        <td>{{ order.clavepedido }}</td>
+        <td>{{ order.fechapedido }}</td>
+        <td>{{ order.estado }}</td>
+        <td>{{ order.observaciones }}</td>
+        <td>{{ order.claveempleado }}</td>
+        <td>{{ order.tipopedido }}</td>
+        <td>{{ order.claveproveedor }}</td>
+        <td>{{ order.total }}</td>
+
+        <td class="td-operaciones">
+          <div class="btn-contenedor">
+            <!-- NUEVO: botón ver detalle -->
+            
+
+            <button class="btn-editar" (click)="onEdit(order)">
+              <i class="bx bx-edit"></i>
+            </button>
+
+            <button class="btn-eliminar" (click)="onDelete(order)">
+              <i class="bx bx-trash"></i>
+            </button>
+
+            <button class="btn-detalle" (click)="onViewDetail(order)" title="Ver detalle">
+              <i class="bx bx-list-ul"></i>
+            </button>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- MODAL DETALLE PEDIDO -->
+<div class="modal-overlay" *ngIf="isDetailOpen" (click)="closeDetail()">
+  <div class="modal-contenedor" (click)="$event.stopPropagation()">
+
+    <div class="modal-header">
+      <h3>Detalle del Pedido <span>{{ selectedOrderDetail?.clavepedido }}</span></h3>
+      <button class="btn-cerrar-modal" (click)="closeDetail()">
+        <i class="bx bx-x"></i>
+      </button>
+    </div>
+
+    <div class="modal-info-pedido">
+      <div class="info-item">
+        <label>Estado</label>
+        <span>{{ selectedOrderDetail?.estado }}</span>
+      </div>
+      <div class="info-item">
+        <label>Fecha</label>
+        <span>{{ selectedOrderDetail?.fechapedido }}</span>
+      </div>
+      <div class="info-item">
+        <label>Proveedor</label>
+        <span>{{ selectedOrderDetail?.claveproveedor }}</span>
+      </div>
+      <div class="info-item">
+        <label>Empleado</label>
+        <span>{{ selectedOrderDetail?.claveempleado }}</span>
+      </div>
+      <div class="info-item">
+        <label>Tipo</label>
+        <span>{{ selectedOrderDetail?.tipopedido }}</span>
+      </div>
+      <div class="info-item">
+        <label>Total</label>
+        <span>{{ selectedOrderDetail?.total | currency }}</span>
+      </div>
+      <div class="info-item full-width">
+        <label>Observaciones</label>
+        <span>{{ selectedOrderDetail?.observaciones }}</span>
+      </div>
+    </div>
+
+    <div class="modal-body">
+      <h4>Productos del Pedido</h4>
+
+      <ng-container *ngIf="selectedOrderDetail?.detalles?.length; else sinDetalles">
+        <table class="tabla-detalle">
+          <thead>
+            <tr>
+              <th>Clave Producto</th>
+              <th>Cantidad</th>
+              <th>Descripción</th>
+              <th>Tipo Detalle</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let det of selectedOrderDetail?.detalles">
+              <td>{{ det.claveproducto }}</td>
+              <td>{{ det.cantidad }}</td>
+              <td>{{ det.descripcion }}</td>
+              <td>
+                <span class="badge" [ngClass]="getBadgeClass(det.tipo_detalle)">
+                  {{ det.tipo_detalle }}
+                </span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </ng-container>
+
+      <ng-template #sinDetalles>
+        <p class="sin-datos">No hay productos registrados para este pedido.</p>
+      </ng-template>
+    </div>
+
+  </div>
+</div>

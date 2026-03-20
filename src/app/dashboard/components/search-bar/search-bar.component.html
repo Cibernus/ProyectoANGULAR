@@ -1,0 +1,9 @@
+
+<div class="busqueda">
+  <i class="bx bx-search icono-busqueda"></i>
+  <input 
+    type="search" 
+    [(ngModel)]="searchTerm" 
+    (keyup.enter)="onSearch()" 
+    placeholder="Buscar...">
+</div>

@@ -1,0 +1,27 @@
+<header class="dashboard-header">
+  <h2 class="titulo-dashboard">Empleados</h2>
+  <div class="acciones-header">
+    <app-notifications-dropdown></app-notifications-dropdown>
+    <app-user-dropdown></app-user-dropdown>
+  </div>
+</header>
+
+<div class="container-fluid">
+  <app-employees-toolbar (search)="onSearch($event)" (add)="openAddForm()"> </app-employees-toolbar>
+
+  <app-employees-table
+    [employees]="filteredEmployees"
+    (edit)="openEditForm($event)"
+    (delete)="deleteEmployee($event)"
+  >
+  </app-employees-table>
+</div>
+
+<app-employee-form
+  [employee]="selectedEmployee"
+  [mode]="formMode"
+  [visible]="showForm"
+  (save)="saveEmployee($event)"
+  (close)="closeForm()"
+>
+</app-employee-form>

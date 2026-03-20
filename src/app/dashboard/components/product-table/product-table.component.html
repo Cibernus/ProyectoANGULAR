@@ -1,0 +1,22 @@
+<div class="card h-100 m-0 p-0"> <!-- 👈 eliminamos márgenes y padding -->
+  <div class="card-header">
+    <h5 class="card-title mb-0">Ventas por Producto en Unidades</h5>
+  </div>
+  <div class="card-body d-flex flex-column h-100 p-0"> <!-- 👈 sin padding extra -->
+    <!-- 👇 quitamos table-responsive -->
+    <table class="table w-100 h-100 m-0">
+      <thead>
+        <tr class="tr">
+          <th>Producto</th>
+          <th>Unidades</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let product of products" >
+          <td>{{ product.name }}</td>
+          <td>{{ product.units }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

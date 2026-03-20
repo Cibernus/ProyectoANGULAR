@@ -1,0 +1,44 @@
+<div class="tablas-informacion">
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Fecha</th>
+        <th>Tipo</th>
+        <th>Estado</th>
+        <th>Total</th>
+        <th>Forma de Pago</th>
+        <th>Operaciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let compra of compras">
+        <td>{{ compra.id }}</td>
+        <td>{{ compra.fechaCompra }}</td>
+        <td>
+          <span>
+            {{ compra.tipoCompra === 'pedido' ? 'Pedido' : 'Directa' }}
+          </span>
+        </td>
+        <td>
+          <span>
+            {{ compra.estado | titlecase }}
+          </span>
+        </td>
+        <td>{{ compra.total | currency: 'MXN' : 'symbol' : '1.2-2' }}</td>
+        <td>{{ compra.formaPago | titlecase }}</td>
+        <td>
+          <button class="btn-editar" (click)="onEdit(compra)">
+            <i class="bx bx-edit"></i>
+          </button>
+          <button class="btn-eliminar" (click)="onDelete(compra)">
+            <i class="bx bx-trash"></i>
+          </button>
+        </td>
+      </tr>
+      <tr *ngIf="compras.length === 0">
+        <td colspan="7" class="sin-datos">No hay compras registradas</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

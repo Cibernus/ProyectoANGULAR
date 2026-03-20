@@ -1,0 +1,56 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+@import 'boxicons/css/boxicons.min.css';
+@import 'bootstrap/dist/css/bootstrap.min.css';
+
+:root {
+  --color-fondo: #ffffff;
+  --color-barra-lateral: #4299ff;
+  --color-primario: #ffffff;
+  --color-primario-claro: #000000;
+  --color-toggle: #dddddd;
+  --color-texto: #ffffff;
+  --color-texto-hover: #4299ff;
+  --tran-03: all 0.2s ease;
+
+  --t-xs: 11px; /* badges, labels de sección */
+  --t-sm: 12px; /* th de tablas, botones */
+  --t-base: 14px; /* td, párrafos, nav items */
+  --t-lg: 18px; /* subtítulos de card */
+  --t-xl: 22px; /* título del topbar */
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  transition: var(--tran-03);
+  color: #000000;
+  background-color: var(--color-fondo);
+  background-color: #f8fafc !important;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* ====== BARRA LATERAL ====== */
+.barra-lateral ul {
+  list-style: none !important;
+  padding-left: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+.barra-lateral li a {
+  display: flex !important;
+  align-items: center !important;
+}
+
+.barra-lateral i[class^='bx'] {
+  font-family: 'boxicons' !important;
+}
+
+.table-responsive {
+  overflow-x: hidden !important;
+}

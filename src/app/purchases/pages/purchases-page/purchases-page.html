@@ -1,0 +1,27 @@
+<header class="dashboard-header">
+  <h2 class="titulo-dashboard">Compras</h2>
+  <div class="acciones-header">
+    <app-notifications-dropdown></app-notifications-dropdown>
+    <app-user-dropdown></app-user-dropdown>
+  </div>
+</header>
+
+<div class="container-fluid">
+  <app-compras-toolbar (search)="onSearch($event)" (add)="openAddForm()"></app-compras-toolbar>
+
+  <app-compras-table
+    [compras]="filteredCompras"
+    (edit)="openEditForm($event)"
+    (delete)="deleteCompra($event)"
+  >
+  </app-compras-table>
+</div>
+
+<app-compra-form
+  [compra]="selectedCompra"
+  [mode]="formMode"
+  [visible]="showForm"
+  (save)="saveCompra($event)"
+  (close)="closeForm()"
+>
+</app-compra-form>

@@ -1,0 +1,86 @@
+/* ====== SALES TABLE ====== */
+.tablas-informacion {
+  background-color: #ffffff;
+  border: none;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  margin-top: 30px;
+  overflow: hidden;
+  max-width: 100%;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: auto;
+}
+
+thead {
+  background-color: #ffffff;
+}
+
+th {
+  padding: 12px 14px;
+  font-size: var(--t-sm);
+  font-weight: 700;
+  font-family: 'Poppins', sans-serif;
+  text-align: left;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  color: #6b7280;
+  border-bottom: 1px solid #e5e7eb;
+  background-color: #ffffff;
+}
+
+td {
+  padding: 13px 14px;
+  font-size: var(--t-base);
+  font-family: 'Poppins', sans-serif;
+  color: #111827;
+  border-bottom: 1px solid #f1f1f1;
+}
+
+tbody tr {
+  transition: background-color 0.15s ease;
+}
+
+tbody tr:hover {
+  background-color: #f9fafb;
+}
+
+tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.td-operaciones {
+  text-align: left;
+}
+
+/* ── Botón imprimir ── */
+.btn-imprimir {
+  padding: 6px 14px;
+  background-color: var(--color-barra-lateral);
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: var(--t-sm);
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  transition: background-color 0.2s ease;
+}
+
+.btn-imprimir:hover {
+  background-color: #2980d9;
+}
+
+/* ── Responsivo ── */
+@media (max-width: 768px) {
+  table {
+    display: block;
+    overflow-x: auto;
+  }
+}

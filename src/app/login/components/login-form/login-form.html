@@ -1,0 +1,43 @@
+<div class="contenido-login">
+
+  <h2>Iniciar sesión en tu cuenta</h2>
+  <p>¡Bienvenido de nuevo! Por favor, ingresa tus datos</p>
+
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+
+    <label>Correo electrónico:</label>
+    <input type="email" formControlName="email" placeholder="Correo electrónico">
+
+    @if (email?.invalid && email?.touched) {
+      <span class="error-message">Correo inválido</span>
+    }
+
+    <label>Contraseña:</label>
+    <input type="password" formControlName="password" placeholder="Contraseña">
+
+    @if (password?.invalid && password?.touched) {
+      <span class="error-message">La contraseña es obligatoria</span>
+    }
+
+    <div class="opciones-contenedor">
+
+      <div class="checkbox">
+        <input type="checkbox" formControlName="recuerdame">
+        <label>Recuérdame</label>
+      </div>
+
+      <div class="olvidar-contenedor">
+        <a routerLink="/recuperar-password">
+          ¿Olvidaste tu contraseña?
+        </a>
+      </div>
+
+    </div>
+
+    <button type="submit" [disabled]="loginForm.invalid">
+      Iniciar sesión
+    </button>
+
+  </form>
+
+</div>

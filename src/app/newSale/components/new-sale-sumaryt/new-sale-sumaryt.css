@@ -1,0 +1,144 @@
+/* ====== NEW SALE SUMMARY ====== */
+.resumen-venta {
+  background-color: #ffffff;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+}
+
+.resumen-titulo {
+  font-size: var(--t-lg);
+  font-weight: 700;
+  font-family: 'Poppins', sans-serif;
+  color: #111827;
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+/* ── Filas de datos ── */
+.resumen-fila {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+  border-bottom: 1px solid #f1f1f1;
+}
+
+.resumen-fila:last-of-type {
+  border-bottom: none;
+}
+
+.resumen-label {
+  font-size: var(--t-base);
+  font-family: 'Poppins', sans-serif;
+  color: #6b7280;
+}
+
+.resumen-valor {
+  font-size: var(--t-base);
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  color: #111827;
+}
+
+/* ── Total ── */
+.resumen-fila.total {
+  margin-top: 8px;
+  padding-top: 12px;
+  border-top: 2px solid #e5e7eb;
+  border-bottom: none;
+}
+
+.resumen-fila.total .resumen-label {
+  font-size: var(--t-md, 15px);
+  font-weight: 700;
+  color: #111827;
+}
+
+.resumen-fila.total .resumen-valor {
+  font-size: var(--t-lg);
+  font-weight: 700;
+  color: var(--color-barra-lateral);
+}
+
+/* ── Input efectivo ── */
+.efectivo-grupo {
+  margin-top: 16px;
+}
+
+.efectivo-label {
+  display: block;
+  font-size: var(--t-sm);
+  font-weight: 600;
+  font-family: 'Poppins', sans-serif;
+  color: #374151;
+  margin-bottom: 6px;
+}
+
+.efectivo-input {
+  width: 100%;
+  height: 40px;
+  padding: 10px 14px;
+  border-radius: 5px;
+  border: 1px solid gainsboro;
+  font-size: var(--t-base);
+  font-family: 'Poppins', sans-serif;
+  color: #111827;
+  box-sizing: border-box;
+  text-align: right;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.efectivo-input:focus {
+  border-color: var(--color-barra-lateral);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(66, 153, 255, 0.15);
+}
+
+/* ── Botones ── */
+.resumen-acciones {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 20px;
+}
+
+.btn-confirmar {
+  background-color: var(--color-barra-lateral);
+  color: #ffffff;
+  font-size: var(--t-sm);
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  padding: 10px 15px;
+  border-radius: 8px;
+  cursor: pointer;
+  border: none;
+  width: 100%;
+  transition: background-color 0.2s ease;
+}
+
+.btn-confirmar:hover {
+  background-color: #2980d9;
+}
+
+.btn-cancelar {
+  background-color: #f3f4f6;
+  color: #374151;
+  font-size: var(--t-sm);
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  padding: 10px 15px;
+  border-radius: 8px;
+  cursor: pointer;
+  border: 1px solid #e5e7eb;
+  width: 100%;
+  transition: background-color 0.2s ease;
+}
+
+.btn-cancelar:hover {
+  background-color: #e5e7eb;
+  color: #111827;
+}

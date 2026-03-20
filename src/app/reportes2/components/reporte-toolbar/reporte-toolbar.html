@@ -1,0 +1,53 @@
+<div class="primer-apartado">
+  <div class="busqueda">
+    <i class="bx bx-search icono-busqueda"></i>
+    <input type="text" placeholder="Buscar..." (input)="onBuscar($any($event.target).value)" />
+  </div>
+
+  <div class="acciones-toolbar">
+    <button class="btn-descargar" *ngIf="mostrarDescargar" (click)="onDescargar()">
+      <i class="bx bx-download"></i> Descargar
+    </button>
+
+    <div class="dropdown-wrap" *ngIf="mostrarTipo">
+      <button class="btn-dropdown" (click)="toggleTipo()">
+        {{ tipoActivo || 'Tipo' }} <i class="bx bx-chevron-down"></i>
+      </button>
+      <div class="dropdown-menu-custom" [class.visible]="dropdownTipoAbierto">
+        <div
+          class="dropdown-item-custom"
+          *ngFor="let op of opcionesTipo"
+          (click)="onFiltrarTipo(op.valor, op.etiqueta)"
+        >
+          {{ op.etiqueta }}
+        </div>
+      </div>
+    </div>
+
+    <div class="dropdown-wrap">
+      <button class="btn-dropdown" (click)="toggleOrden()">
+        {{ criterioOrdenActivo || 'Ordenar por' }} <i class="bx bx-chevron-down"></i>
+      </button>
+      <div class="dropdown-menu-custom" [class.visible]="dropdownOrdenAbierto">
+        <div
+          class="dropdown-item-custom"
+          *ngFor="let op of opcionesOrden"
+          (click)="onOrdenar(op.valor, op.etiqueta)"
+        >
+          {{ op.etiqueta }}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TABS -->
+<div class="tabs-reportes">
+  <a class="tab-item" routerLink="/reportes2/stock" routerLinkActive="activo"> Reporte General </a>
+  <a class="tab-item" routerLink="/reportes2/entradas-salidas" routerLinkActive="activo">
+    Entradas y Salidas
+  </a>
+  <a class="tab-item" routerLink="/reportes2/inventario" routerLinkActive="activo">
+    Valor de Inventario
+  </a>
+</div>

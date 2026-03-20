@@ -1,0 +1,27 @@
+<header class="dashboard-header">
+  <h2 class="titulo-dashboard">Productos</h2>
+  <div class="acciones-header">
+    <app-notifications-dropdown></app-notifications-dropdown>
+    <app-user-dropdown></app-user-dropdown>
+  </div>
+</header>
+
+<div class="container-fluid">
+  <app-products-toolbar (search)="onSearch($event)" (add)="openAddForm()"> </app-products-toolbar>
+
+  <app-products-table
+    [products]="filteredProducts"
+    (edit)="openEditForm($event)"
+    (delete)="deleteProduct($event)"
+  >
+  </app-products-table>
+</div>
+
+<app-products-form
+  [product]="selectedProduct"
+  [mode]="formMode"
+  [visible]="showForm"
+  (save)="saveProduct($event)"
+  (close)="closeForm()"
+>
+</app-products-form>

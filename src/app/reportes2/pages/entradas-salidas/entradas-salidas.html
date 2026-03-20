@@ -1,0 +1,22 @@
+<div class="dashboard-header">
+  <h1 class="titulo-dashboard">Entradas y Salidas</h1>
+  <div class="acciones-header">
+    <app-notifications-dropdown></app-notifications-dropdown>
+    <app-user-dropdown></app-user-dropdown>
+  </div>
+</div>
+
+<div class="container-fluid">
+  <app-reporte-toolbar
+    [opcionesOrden]="opcionesOrden"
+    [opcionesTipo]="opcionesTipo"
+    [mostrarDescargar]="true"
+    [mostrarTipo]="true"
+    (buscar)="onBuscar($event)"
+    (ordenar)="onOrdenar($event)"
+    (filtrarTipo)="onFiltrarTipo($event)"
+    (descargar)="onDescargar()"
+  ></app-reporte-toolbar>
+
+  <app-reporte-table [columnas]="columnas" [datos]="movimientosFiltrados"></app-reporte-table>
+</div>

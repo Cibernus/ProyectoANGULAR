@@ -1,0 +1,24 @@
+<div class="col-md-11">
+  <div class="card" style="height: 50vh;">
+    <div class="card-header">
+      <h5 class="card-title mb-0">Porcentaje de Ventas por Producto</h5>
+    </div>
+    <div class="card-body d-flex"
+         style="height: calc(100% - 56px); flex-direction: row; justify-content: center; align-items: center;">
+      
+      <!-- Gráfica -->
+      <div class="chart-container"
+           style="flex: 1; display: flex; justify-content: center; align-items: center; overflow: hidden;">
+        <canvas #chartCanvas style="max-width: 100%; max-height: 100%;"></canvas>
+      </div>
+
+      <!-- Lista -->
+      <div class="list-container"
+           style="flex: 1; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 10px;">
+        <ul class="list-unstyled" style="margin-bottom: 0; padding: 0; text-align: center;">
+          <li *ngFor="let item of data">{{ item.name }}: {{ item.value }}%</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

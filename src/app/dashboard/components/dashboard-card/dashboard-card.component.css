@@ -1,0 +1,59 @@
+
+
+/* ====== CARDS GENERALES ====== */
+.card {
+  border: none !important;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1) !important;
+  border-radius: 8px !important;
+}
+
+.card-header {
+  background-color: #ffffff !important;
+  border: none !important;
+  padding: 1rem !important;
+}
+
+.card-title {
+  color: #000000 !important;
+  font-weight: 600 !important;
+}
+
+.card-body {
+  background-color: #ffffff !important;
+  border: none !important;
+}
+/* ====== CARDS DEL DASHBOARD ====== */
+/* Cards del dashboard con efecto hover */
+.dashboard-card {
+    
+    border: none !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
+    transition: transform 0.4s ease-in-out, box-shadow 0.3s ease-in-out;
+     border-radius: 2px;   /* 👈 redondea las esquinas */
+      overflow: hidden;  
+}
+
+.dashboard-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+
+.dashboard-card .card-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;   /* centra el contenido */
+  padding: 1rem;
+}
+
+.dashboard-card .card-value {
+  font-size: 2rem;
+  font-weight: bold;
+  margin: 0.5rem 0;
+}
+
+.dashboard-card small {
+  font-size: 1rem;
+  font-weight: 600;
+}
+

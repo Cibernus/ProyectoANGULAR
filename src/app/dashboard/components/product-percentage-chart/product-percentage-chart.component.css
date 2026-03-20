@@ -1,0 +1,17 @@
+.card-header {
+  background-color: #ffffff !important;
+   border: none !important;
+  padding: 1rem !important;
+
+}
+
+.card {
+  border: none !important;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1) !important;
+  border-radius: 8px !important;
+}
+
+.card-title {
+  color: #000000 !important;
+  font-weight: 600 !important;
+}

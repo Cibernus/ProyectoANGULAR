@@ -1,0 +1,42 @@
+<header class="dashboard-header">
+  <h2 class="titulo-dashboard">Dashboard</h2>
+  <div class="acciones-header">
+    <app-notifications-dropdown></app-notifications-dropdown>
+    <app-user-dropdown></app-user-dropdown>
+  </div>
+</header>
+
+<main class="container-fluid px-4">
+  <!-- Tarjetas -->
+  <div class="row g-0 mb-4 cards-row mt-6">
+    <div class="col-md-3 p-0" *ngFor="let card of cards">
+      <app-dashboard-card
+        [title]="card.title"
+        [value]="card.value"
+        [percentage]="card.percentage"
+        [trend]="card.trend"
+      >
+      </app-dashboard-card>
+    </div>
+  </div>
+
+  <!-- Gráficos -->
+  <div class="row g-4 charts-row mt-4 2 w-90">
+    <div class="col-md-6 chart-left mt-2">
+      <app-sales-chart [data]="dailySales"></app-sales-chart>
+    </div>
+    <div class="col-md-6 char-left-2 ps-md-5 ps-lg-4 pe-md-0 mt-2">
+      <app-product-percentage-chart [data]="productPercentage"></app-product-percentage-chart>
+    </div>
+  </div>
+
+  <!-- Ventas mensuales y tabla -->
+  <div class="row g-3 chart-left-3 mt-0 w-100 mt-3">
+    <div class="col-md-8">
+      <app-monthly-sales-chart [data]="monthlySales"></app-monthly-sales-chart>
+    </div>
+    <div class="col-md-4 productos ps-md-5 ps-lg-4 pe-md-0">
+      <app-product-table [products]="products"></app-product-table>
+    </div>
+  </div>
+</main>

@@ -1,0 +1,13 @@
+<header class="dashboard-header">
+  <h2 class="titulo-dashboard">Historial de Ventas</h2>
+  <div class="acciones-header">
+    <app-notifications-dropdown></app-notifications-dropdown>
+    <app-user-dropdown></app-user-dropdown>
+  </div>
+</header>
+
+<div class="container-fluid">
+  <app-sales-toolbar (search)="onSearch($event)" (nuevaVenta)="onNuevaVenta()"> </app-sales-toolbar>
+
+  <app-sales-table [sales]="filteredSales" (imprimir)="onImprimir($event)"> </app-sales-table>
+</div>

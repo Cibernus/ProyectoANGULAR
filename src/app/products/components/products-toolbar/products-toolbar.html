@@ -1,0 +1,13 @@
+<div class="primer-apartado">
+  <div class="busqueda">
+    <i class='bx bx-search icono-busqueda'></i>
+    <input 
+      type="text" 
+      placeholder="Buscar producto..." 
+      (input)="onSearch($event)">
+  </div>
+  
+  <button class="nuevo-producto" (click)="onAdd()">
+    <i class='bx bx-plus'></i> Agregar
+  </button>
+</div>

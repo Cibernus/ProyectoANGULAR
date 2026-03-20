@@ -1,0 +1,32 @@
+<header class="dashboard-header">
+  <h2 class="titulo-dashboard">Ticket</h2>
+  <div class="acciones-header">
+    <app-notifications-dropdown></app-notifications-dropdown>
+    <app-user-dropdown></app-user-dropdown>
+  </div>
+</header>
+
+<div class="container-fluid" *ngIf="hasData">
+  <app-ticket-toolbar (nuevaVenta)="onNuevaVenta()"></app-ticket-toolbar>
+
+  <app-new-ticket
+    [items]="ticketData.items"
+    [subtotal]="ticketData.subtotal"
+    [impuestos]="ticketData.impuestos"
+    [total]="ticketData.total"
+    [efectivo]="ticketData.efectivo"
+    [cambio]="ticketData.cambio"
+    [fecha]="ticketData.fecha"
+    [hora]="ticketData.hora"
+    (imprimir)="onImprimir()"
+    (nuevaVenta)="onNuevaVenta()"
+  >
+  </app-new-ticket>
+</div>
+
+<div class="container-fluid" *ngIf="!hasData">
+  <div style="text-align: center; padding: 50px">
+    <h3>Cargando ticket...</h3>
+    <p>Si no se redirige automáticamente, <a routerLink="/nueva-venta">haga clic aquí</a></p>
+  </div>
+</div>

@@ -1,0 +1,19 @@
+<nav class="barra-lateral">
+  <header>
+    <div class="logo">
+      <img id="imagen" src="../../../../assets/images/logo.jpg">
+    </div>
+  </header>
+
+  <div class="menu-barra">
+    <ul class="enlaces-menu">
+      <li class="enlace-nav" *ngFor="let item of menuItems">
+        <a [routerLink]="item.path" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: false }">
+          <i [class]="item.icon + ' icon'"></i>
+          <span class="texto nav-text">{{ item.label }}</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+</nav>
+

@@ -1,0 +1,72 @@
+/* ====== PRODUCTS TOOLBAR ====== */
+.primer-apartado {
+  background-color: #ffffff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  margin-top: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.busqueda {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.busqueda input {
+  height: 40px;
+  padding: 10px 10px 10px 35px;
+  border-radius: 5px;
+  border: 1px solid gainsboro;
+  flex: 0 0 200px;
+  box-sizing: border-box;
+  font-size: var(--t-base);
+  font-family: 'Poppins', sans-serif;
+}
+
+.busqueda input:focus {
+  border-color: var(--color-barra-lateral);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(66, 153, 255, 0.15);
+}
+
+.busqueda input::placeholder {
+  color: #727a87;
+  font-size: var(--t-base);
+}
+
+.icono-busqueda {
+  position: absolute;
+  left: 10px;
+  color: #727a87;
+  font-size: 18px;
+  pointer-events: none;
+}
+
+.nuevo-producto {
+  background-color: var(--color-barra-lateral);
+  color: #ffffff;
+  font-size: var(--t-sm);
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  padding: 10px 15px;
+  border-radius: 8px;
+  cursor: pointer;
+  border: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: background-color 0.2s ease;
+}
+
+.nuevo-producto:hover {
+  background-color: #2980d9;
+}
+
+.nuevo-producto i {
+  font-size: 16px;
+}

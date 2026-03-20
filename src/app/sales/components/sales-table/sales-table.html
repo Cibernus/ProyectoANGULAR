@@ -1,0 +1,29 @@
+<div class="tablas-informacion">
+  <table>
+    <thead>
+      <tr>
+        <th>Número de Venta</th>
+        <th>Fecha</th>
+        <th>Total</th>
+        <th>Empleado</th>
+        <th>Operaciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let sale of sales">
+        <td>{{ sale.numeroVenta }}</td>
+        <td>{{ sale.fecha }}</td>
+        <td>${{ sale.total.toFixed(2) }}</td>
+        <td>{{ sale.empleado }}</td>
+        <td class="td-operaciones">
+          <button class="btn-imprimir" (click)="onImprimir(sale)">Imprimir</button>
+        </td>
+      </tr>
+      <tr *ngIf="sales.length === 0">
+        <td colspan="5" style="text-align: center; padding: 20px;">
+          No hay ventas registradas
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

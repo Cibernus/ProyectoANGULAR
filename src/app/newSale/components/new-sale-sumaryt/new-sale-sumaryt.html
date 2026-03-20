@@ -1,0 +1,41 @@
+<div class="resumen-venta">
+  <h3 class="resumen-titulo">Resumen de venta</h3>
+
+  <div class="resumen-fila">
+    <span class="resumen-label">Subtotal</span>
+    <span class="resumen-valor">${{ subtotal.toFixed(2) }}</span>
+  </div>
+
+  <div class="resumen-fila">
+    <span class="resumen-label">Impuestos</span>
+    <span class="resumen-valor">${{ impuestos.toFixed(2) }}</span>
+  </div>
+
+  <div class="resumen-fila total">
+    <span class="resumen-label">Total a Pagar</span>
+    <span class="resumen-valor">${{ total.toFixed(2) }}</span>
+  </div>
+
+  <div class="efectivo-grupo">
+    <label class="efectivo-label">Efectivo</label>
+    <input
+      class="efectivo-input"
+      type="number"
+      [value]="efectivo"
+      (input)="efectivoChange.emit(+$any($event.target).value)"
+      placeholder="$0.00"
+    />
+  </div>
+
+  <div class="resumen-fila" style="margin-top: 10px">
+    <span class="resumen-label">Cambio</span>
+    <span class="resumen-valor"
+      >${{ (efectivo - total > 0 ? efectivo - total : 0).toFixed(2) }}</span
+    >
+  </div>
+
+  <div class="resumen-acciones">
+    <button class="btn-confirmar" (click)="confirmar.emit()">Confirmar</button>
+    <button class="btn-cancelar" (click)="cancelar.emit()">Cancelar</button>
+  </div>
+</div>

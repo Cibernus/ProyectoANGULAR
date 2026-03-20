@@ -1,0 +1,97 @@
+<div class="offcanvas offcanvas-end"
+     [class.show]="isOpen"
+     tabindex="-1">
+
+  <div class="offcanvas-header">
+    <h5>{{ isEditMode ? 'Actualizar Pedido' : 'Agregar Pedido' }}</h5>
+
+    <button type="button" class="btn-close" (click)="close()"></button>
+  </div>
+
+  <div class="offcanvas-body">
+
+    <form (ngSubmit)="submitForm()" #orderForm="ngForm">
+
+      <div class="mb-3">
+        <label class="form-label">Fecha del Pedido</label>
+        <input type="date"
+               class="form-control"
+               [(ngModel)]="order.fechapedido"
+               name="fechapedido"
+               required>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Estado</label>
+
+        <select class="form-control"
+                [(ngModel)]="order.estado"
+                name="estado"
+                required>
+
+          <option value="">Seleccionar</option>
+          <option value="pendiente">Pendiente</option>
+          <option value="completado">Completado</option>
+          <option value="cancelado">Cancelado</option>
+
+        </select>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Tipo de Pedido</label>
+        <input type="text"
+               class="form-control"
+               [(ngModel)]="order.tipopedido"
+               name="tipopedido"
+               required>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Proveedor</label>
+        <input type="text"
+               class="form-control"
+               [(ngModel)]="order.claveproveedor"
+               name="claveproveedor"
+               required>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Empleado</label>
+        <input type="text"
+               class="form-control"
+               [(ngModel)]="order.claveempleado"
+               name="claveempleado"
+               required>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Observaciones</label>
+        <input type="text"
+               class="form-control"
+               [(ngModel)]="order.observaciones"
+               name="observaciones">
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Total</label>
+        <input type="number"
+               class="form-control"
+               [(ngModel)]="order.total"
+               name="total"
+               required>
+      </div>
+
+      <button type="submit" class="btn btn-primary">
+        {{ isEditMode ? 'Actualizar' : 'Guardar' }}
+      </button>
+
+    </form>
+
+  </div>
+</div>
+
+<div class="offcanvas-backdrop fade"
+     [class.show]="isOpen"
+     *ngIf="isOpen"
+     (click)="close()">
+</div>

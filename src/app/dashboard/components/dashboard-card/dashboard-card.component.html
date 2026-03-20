@@ -1,0 +1,14 @@
+<div class="col-md-11 d-flex">
+  <div class="card dashboard-card flex-fill">
+    <div class="card-header text-center">
+      <h6 class="card-title mb-0">{{ title }}</h6>
+    </div>
+    <div class="card-body d-flex flex-column justify-content-center align-items-center">
+      <h4 class="card-text mb-2">{{ value }}</h4>
+      <small [ngClass]="trend === 'up' ? 'text-success' : 'text-danger'">
+        <i [class]="trend === 'up' ? 'bx bx-up-arrow-alt' : 'bx bx-down-arrow-alt'"></i>
+        {{ percentage }}%
+      </small>
+    </div>
+  </div>
+</div>

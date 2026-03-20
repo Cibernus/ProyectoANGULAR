@@ -1,0 +1,189 @@
+/* ====== LAYOUT PRINCIPAL ====== */
+
+.titulo_de_la_pagina {
+  background-color: #ffffff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  border-radius: 5px;
+  margin-left: 250px;
+  margin-bottom: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.titulo_de_la_pagina h2 {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 0;
+}
+
+/* ====== NAV ====== */
+.primer_apartado {
+  background-color: #ffffff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  border-radius: 5px;
+  margin-top: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.primer_apartado section .nav2 ul {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.primer_apartado section .nav2 ul li a {
+  text-decoration: none;
+  color: #000000;
+  margin-left: 30px;
+}
+
+.primer_apartado section .nav2 ul li a:hover,
+.primer_apartado section .nav2 ul li a.activo {
+  color: var(--color-texto-hover);
+  border-bottom: medium solid;
+}
+
+/* ====== TABLAS ====== */
+table {
+  border-collapse: collapse;
+  width: 100%;
+  table-layout: fixed;
+}
+
+thead {
+  background-color: #ffffff;
+}
+
+th,
+td {
+  padding: 10px;
+  text-align: left;
+  border-bottom: thin solid gainsboro;
+}
+
+/* ====== DROPDOWN ====== */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.btn {
+  padding: 4px 16px !important;
+  cursor: pointer !important;
+  display: flex !important;
+  align-items: center !important;
+  font-size: 16px !important;
+  border: none !important;
+  background-color: white !important;
+}
+
+.dropdown-toggle::after {
+  display: none;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: white;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  z-index: 1;
+  list-style: none;
+  padding: 8px 0;
+}
+
+.dropdown-menu.show {
+  display: block;
+}
+
+.dropdown-menu li a {
+  text-decoration: none;
+  color: black;
+  display: block;
+  padding: 4px 16px;
+}
+
+.dropdown-menu li a:hover {
+  background-color: var(--color-barra-lateral);
+  color: white;
+}
+
+/* GRAFICAS */
+.cards-row {
+  margin-left: 250px;
+  margin-top: 30px;
+}
+
+.charts-row {
+  margin-left: 290px;
+  /* 👈 alinea las columnas a la derecha */
+}
+
+.chart-left {
+  margin-left: -50px;
+  margin-top: -1px;
+  width: 54.3%;
+}
+
+.char-left-2 {
+  margin-left: -50px;
+  margin-top: -1px;
+  width: 54%;
+  transform: translateX(15px);
+}
+
+.chart-left-3 {
+  width: 95%;
+  padding-left: 250px;
+  padding-right: 20px;
+}
+
+.dashboard-header {
+  margin-left: 250px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 1rem;
+  background-color: #ffffff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+.titulo-dashboard {
+  margin: 0;
+  font-size: var(--t-xl);
+  font-weight: 700;
+  font-family: 'Poppins', sans-serif;
+  color: #111827;
+}
+
+.acciones-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.productos {
+  padding-left: 5px;
+  width: 33.3%;
+}
+
+/* ====== FIX RESPONSIVO CHARTS-ROW ====== */
+@media (min-width: 1600px) {
+  .chart-left {
+    width: 48% !important;
+  }
+
+  .char-left-2 {
+    width: 48% !important;
+  }
+}

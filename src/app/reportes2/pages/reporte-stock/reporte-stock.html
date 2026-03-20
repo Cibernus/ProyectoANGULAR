@@ -1,0 +1,20 @@
+<div class="dashboard-header">
+  <h1 class="titulo-dashboard">Reporte de Stock</h1>
+  <div class="acciones-header">
+    <app-notifications-dropdown></app-notifications-dropdown>
+    <app-user-dropdown></app-user-dropdown>
+  </div>
+</div>
+
+<div class="container-fluid">
+  <app-reporte-toolbar
+    [opcionesOrden]="opcionesOrden"
+    [mostrarDescargar]="true"
+    [mostrarTipo]="false"
+    (buscar)="onBuscar($event)"
+    (ordenar)="onOrdenar($event)"
+    (descargar)="onDescargar()"
+  ></app-reporte-toolbar>
+
+  <app-reporte-table [columnas]="columnas" [datos]="stockFiltrado"></app-reporte-table>
+</div>

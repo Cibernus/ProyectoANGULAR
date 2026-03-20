@@ -1,0 +1,68 @@
+<div class="ticket">
+  <p>Abarrotes Reyes</p>
+  <p>Calle 123, Potrero viejo, Ver</p>
+  <p>Teléfono: 278-223-34-22</p>
+  <p>Fecha: {{ fecha }} Hora: {{ hora }}</p>
+
+  <table border id="Tabla">
+    <thead>
+      <tr>
+        <th>Producto</th>
+        <th>Cantidad</th>
+        <th>Precio Unitario</th>
+        <th>Total</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <!-- Productos -->
+      <tr *ngFor="let item of items">
+        <td>{{ item.nombre }}</td>
+        <td>{{ item.cantidad }}</td>
+        <td>${{ item.precio.toFixed(2) }}</td>
+        <td>${{ (item.cantidad * item.precio).toFixed(2) }}</td>
+      </tr>
+
+      <!-- Resumen financiero -->
+      <tr>
+        <td>Subtotal</td>
+        <td></td>
+        <td></td>
+        <td>${{ subtotal.toFixed(2) }}</td>
+      </tr>
+      <tr>
+        <td>Impuestos</td>
+        <td></td>
+        <td></td>
+        <td>${{ impuestos.toFixed(2) }}</td>
+      </tr>
+      <tr>
+        <td>Total a pagar</td>
+        <td></td>
+        <td></td>
+        <td>${{ total.toFixed(2) }}</td>
+      </tr>
+      <tr>
+        <td>Pago recibido</td>
+        <td></td>
+        <td></td>
+        <td>${{ efectivo.toFixed(2) }}</td>
+      </tr>
+      <tr>
+        <td>Cambio entregado</td>
+        <td></td>
+        <td></td>
+        <td>${{ cambio.toFixed(2) }}</td>
+      </tr>
+    </tbody>
+
+    <tr>
+      <td colspan="4" class="mensaje-final">Gracias por su compra, vuelva pronto</td>
+    </tr>
+  </table>
+</div>
+
+<div id="confirmación">
+  <button id="Imprimir" (click)="onImprimir()">Imprimir</button>
+  <button id="Cancelar" (click)="onNuevaVenta()">Cancelar</button>
+</div>

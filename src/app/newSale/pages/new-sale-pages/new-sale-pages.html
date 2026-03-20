@@ -1,0 +1,34 @@
+<header class="dashboard-header">
+  <h2 class="titulo-dashboard">Nueva Venta</h2>
+  <div class="acciones-header">
+    <app-notifications-dropdown></app-notifications-dropdown>
+    <app-user-dropdown></app-user-dropdown>
+  </div>
+</header>
+
+<div class="container-fluid">
+  <app-new-sale-toolbar (search)="onSearch($event)" (scan)="onScan()"> </app-new-sale-toolbar>
+
+  <!-- Contenedor relativo para tabla + resumen -->
+  <div class="venta-contenedor">
+    <!-- Tabla ocupa el espacio izquierdo -->
+    <div class="venta-tabla">
+      <app-new-sale-table [items]="items" (itemsChange)="onItemsChange($event)">
+      </app-new-sale-table>
+    </div>
+
+    <!-- Resumen flota a la derecha independientemente -->
+    <div class="venta-resumen">
+      <app-new-sale-summary
+        [subtotal]="subtotal"
+        [impuestos]="impuestos"
+        [total]="total"
+        [efectivo]="efectivo"
+        (efectivoChange)="efectivo = $event"
+        (cancelar)="onCancel()"
+        (confirmar)="onConfirm()"
+      >
+      </app-new-sale-summary>
+    </div>
+  </div>
+</div>
